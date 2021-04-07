@@ -70,3 +70,20 @@ ifelse(x < y, x, y)
 
 ifelse(sum(x - y) > 0, "positive", ifelse(sum(x - y) < 0, "negative", "zero"))
 ## [1] "negative"
+
+
+## 예제 4-9  switch의 매개변숫값이 문자열을 가지는 경우를 살펴보자
+
+x <- c(1, 2, 3, 4)
+type <- "var"
+
+switch(type, mean=mean(x), median=median(x), sum=sum(x), var=var(x))
+## [1] 1.666667
+
+
+## 예제 4-10 다음은 switch의 매개변숫값이 정숫값을 가지는 경우의 예이다
+
+x <- c(1, 2, 3, 4)
+
+switch(1, mean(x), sum(x), var(x))
+## [1] 2.5
