@@ -1,5 +1,0 @@
- make model price
-0 Hyundai Sonata 3200
-1 kia K5 3100
-2 Ford Taurus 3500
-3 Chevrolet Impala 3700
