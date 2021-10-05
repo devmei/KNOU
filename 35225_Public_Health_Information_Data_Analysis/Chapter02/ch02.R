@@ -222,3 +222,23 @@ plot(sort(woman_bile_ratio), (1:woman_count) / woman_count, type = "s", lty = 2,
      main = "Ogive of Bile Supersaturation", xlab = "Ratio", ylab = "ECDF")
 
 legend(40, 1.0, c("Male", "Female"), lty = c(1, 2))
+
+
+blood_type <- c(22, 20, 7, 11)
+names(blood_type) <- c("A", "B", "AB", "O")
+
+blood_type
+##  A  B AB  O
+## 22 20  7 11
+
+prop.table(blood_type)
+##         A         B        AB         O
+## 0.3666667 0.3333333 0.1166667 0.1833333
+
+barplot(blood_type, col = "cyan", main = "Bar Graph")
+barplot(blood_type, horiz = T, col = "cyan", main = "Bar Graph")
+
+pie(blood_type, main = "Pie Graph")
+
+slices <- c("white", "gray25", "gray50", "gray75")
+pie(blood_type, col = slices, main = "Pie Graph")
