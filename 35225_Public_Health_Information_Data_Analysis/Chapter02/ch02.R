@@ -146,3 +146,79 @@ vioplot(bile_ratio, names = "Ratio")
 plot(sort(bile_ratio), (1:n) / n, type = "s", ylim = c(0, 1),
      main = "Ogive of Bile Supersaturation", xlab = "Ratio", ylab = "ECDF")
 rug(bile_ratio)
+
+
+# 담즙의 과포화 비율 자료에 대한 남녀 간 비교
+
+man <- subset(bile_data, sex == "m")
+man
+
+man_bile_ratio <- man$bile_ratio
+man_count <- length(man_bile_ratio)
+man_count
+## [1] 31
+
+woman <- bile_data[which(sex == "f"),]
+woman
+
+woman_bile_ratio <- woman$bile_ratio
+woman_count <- length(woman_bile_ratio)
+woman_count
+## [1] 29
+
+mean(man_bile_ratio); sd(man_bile_ratio)
+## [1] 84.45161
+## [1] 23.95807
+
+mean(woman_bile_ratio); sd(woman_bile_ratio)
+## [1] 88.51724
+## [1] 27.58444
+
+par(mfrow = c(2, 1))
+
+hist(man_bile_ratio, xlim = c(20, 160), main = "Histogram of man_bile_ratio")
+rug(man_bile_ratio)
+
+hist(woman_bile_ratio, xlim = c(20, 160), main = "Histogram of woman_bile_ratio")
+rug(woman_bile_ratio)
+
+stem(man_bile_ratio)
+##
+##   The decimal point is 1 digit(s) to the right of the |
+##
+##    4 | 07
+##    5 | 2678
+##    6 | 567
+##    7 | 3489
+##    8 | 00667888
+##    9 | 0
+##   10 | 66
+##   11 | 00128
+##   12 | 3
+##   13 | 7
+
+stem(woman_bile_ratio, scale = 2)
+##
+##   The decimal point is 1 digit(s) to the right of the |
+##
+##    3 | 5
+##    4 |
+##    5 | 258
+##    6 | 569
+##    7 | 35667
+##    8 | 0244679
+##    9 | 18
+##   10 | 7
+##   11 | 6
+##   12 | 0378
+##   13 |
+##   14 | 26
+
+vioplot(man_bile_ratio, woman_bile_ratio, names = c("Male", "Female"))
+
+plot(sort(man_bile_ratio), (1:man_count) / man_count, type = "s", xlim = c(30, 150), ylim = c(0, 1),
+     main = "Ogive of Bile Supersaturation", xlab = "Ratio", ylab = "ECDF")
+plot(sort(woman_bile_ratio), (1:woman_count) / woman_count, type = "s", lty = 2, xlim = c(30, 150), ylim = c(0, 1),
+     main = "Ogive of Bile Supersaturation", xlab = "Ratio", ylab = "ECDF")
+
+legend(40, 1.0, c("Male", "Female"), lty = c(1, 2))
